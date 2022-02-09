@@ -1,25 +1,35 @@
 #include <stdio.h>
 #include <string.h>
 
+struct author {
+  char name[20];
+  char spec[30];
+  char year[5];
+  char pages[10];
+};
+typedef struct author Author;
+void show(Author c);
+struct author inpstud(void);
+
 int main() {
   FILE *authors = fopen("authors.txt", "r");
   FILE *vybor = fopen ("vybor.txt", "w");
-  char word1[100],word2[100],word3[100],word4[100];
   char napr[100];
+  Author x;
 
   printf("%s", "Напиши необходимое направление:\nМатематика\nФизика\nПрограммирование\n");
   scanf("%s", napr);
   printf("Вы ввели: %s. Результаты по вашему запросу записаны в файл vybor.txt\n", napr);
   while (!feof(authors)) {
-    fscanf(authors, "%s", word1);
-    fscanf(authors, "%s", word2);
-    fscanf(authors, "%s", word3);
-    fscanf(authors, "%s\n", word4);
-    if (!strcmp(napr, word2)) {
-      fprintf(vybor, "Имя: %s", word1);
-      fprintf(vybor, "\tНаправление: %s", word2);
-      fprintf(vybor, "\tГод: %s", word3);
-      fprintf(vybor, "\tСтраниц: %s", word4);
+    fscanf(authors, "%s", x.name);
+    fscanf(authors, "%s", x.spec);
+    fscanf(authors, "%s", x.year);
+    fscanf(authors, "%s\n", x.pages);
+    if (!strcmp(napr, x.spec)) {
+      fprintf(vybor, "Имя: %s", x.name);
+      fprintf(vybor, "\tНаправление: %s", x.spec);
+      fprintf(vybor, "\tГод: %s", x.year);
+      fprintf(vybor, "\tСтраниц: %s", x.pages);
       fprintf(vybor, "\n");
     }
   }
