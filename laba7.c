@@ -16,20 +16,21 @@ int main() {
   FILE *vybor = fopen ("vybor.txt", "w");
   char napr[100];
   Author x;
+  struct author *p = &x;
 
   printf("%s", "Напиши необходимое направление:\nМатематика\nФизика\nПрограммирование\n");
   scanf("%s", napr);
   printf("Вы ввели: %s. Результаты по вашему запросу записаны в файл vybor.txt\n", napr);
   while (!feof(authors)) {
-    fscanf(authors, "%s", x.name);
-    fscanf(authors, "%s", x.spec);
-    fscanf(authors, "%s", x.year);
-    fscanf(authors, "%s\n", x.pages);
-    if (!strcmp(napr, x.spec)) {
-      fprintf(vybor, "Имя: %s", x.name);
-      fprintf(vybor, "\tНаправление: %s", x.spec);
-      fprintf(vybor, "\tГод: %s", x.year);
-      fprintf(vybor, "\tСтраниц: %s", x.pages);
+    fscanf(authors, "%s", p->name);
+    fscanf(authors, "%s", p->spec);
+    fscanf(authors, "%s", p->year);
+    fscanf(authors, "%s\n", p->pages);
+    if (!strcmp(napr, p->spec)) {
+      fprintf(vybor, "Имя: %s", p->name);
+      fprintf(vybor, "\tНаправление: %s", p->spec);
+      fprintf(vybor, "\tГод: %s", p->year);
+      fprintf(vybor, "\tСтраниц: %s", p->pages);
       fprintf(vybor, "\n");
     }
   }
