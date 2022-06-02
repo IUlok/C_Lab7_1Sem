@@ -39,3 +39,4 @@ int main() {
   fclose(vybor);
   return 0;
 }
+
